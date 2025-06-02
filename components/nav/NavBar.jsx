@@ -10,7 +10,7 @@ export default function NavBar() {
     { id: 4, name: 'Skills', href: '#skills' },
     { id: 5, name: 'Projects', href: '#projects' },
     { id: 6, name: 'Blog', href: '#blog' },
-    { id: 7, name: 'Certificates', href: '#certificates' },
+    // { id: 7, name: 'Certificates', href: '#certificates' },
     { id: 8, name: 'Contact', href: '#contact' },
     {
       id: 9,
@@ -38,7 +38,7 @@ export default function NavBar() {
             <div className="flex-shrink-0">
               <Link href="#home" onClick={handleLogoClick}>
                 <h3
-                  aria-label="Hardik Chotaliya"
+                  aria-label="Nayan Chotaliya"
                   className="text-sky-600 text-3xl font-bold"
                 >
                   Nayan<span className="text-white text-3xl font-bold">.</span>DEV

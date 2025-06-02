@@ -2,53 +2,46 @@ import ServicesCard from './ServiceCard';
 import HyperOne from '../customH1/HyperOne';
 
 const cards = [
-  {
-    src: '/svg/frontend.svg',
-    alt: 'Agile Testing & Sprint Management',
-    title: 'Agile Testing & Sprint Management',
-    description:
-      'Streamline QA processes in Agile to ensure timely and well-tested feature deliveries.',
-  },
-  {
-    src: '/svg/automation.svg',
-    alt: 'Test Automation',
-    title: 'Test Automation',
-    description:
-      'Automate testing for web, mobile, and APIs to ensure consistent quality and save manual effort.',
-  },
+  // {
+  //   src: '/svg/frontend.svg',
+  //   alt: 'Agile Testing & Sprint Management',
+  //   title: 'Agile Testing & Sprint Management',
+  //   description:
+  //     'Streamline QA processes in Agile to ensure timely and well-tested feature deliveries.',
+  // },
   {
     src: '/svg/api.svg',
-    alt: 'API Testing',
-    title: 'API Testing',
+    alt: 'Backend Architecture & API Design',
+    title: 'Backend Architecture & API Design',
     description:
-      'Validate APIs for seamless communication and reliable data exchange across systems.',
+      'Design clean, scalable backend architecture and RESTful APIs to support robust and maintainable systems.',
   },
   {
-    src: '/svg/framework.svg',
-    alt: 'Framework Design',
-    title: 'Framework Design',
+    src: '/svg/database.svg',
+    alt: 'Database Management & Optimization',
+    title: 'Database Management & Optimization',
     description:
-      'Develop scalable automation frameworks using tools like WebdriverIO and TypeScript.',
+      'Build and optimize relational databases using MySQL or PostgreSQL for high-performance and secure data handling.',
   },
-  // {
-  //   src: '/svg/frontend.svg',
-  //   alt: 'Continuous Integration & Delivery',
-  //   title: 'Continuous Integration & Delivery',
-  //   description:
-  //     'Implement automation in CI/CD pipelines for rapid and reliable software releases.',
-  // },
-  // {
-  //   src: '/svg/frontend.svg',
-  //   alt: 'Performance Testing',
-  //   title: 'Performance Testing',
-  //   description:
-  //     'Enhance system performance using tools like K6 and Grafana for fast and stable experiences.',
-  // },
+  {
+    src: '/svg/backend.svg',
+    alt: 'Authentication & Security',
+    title: 'Authentication & Security',
+    description:
+      'Implement secure authentication, authorization, and data protection using Laravel Sanctum, JWT, and best practices.',
+  },
+  {
+    src: '/svg/devops.jpg',
+    alt: 'DevOps & API Deployment',
+    title: 'DevOps & API Deployment',
+    description:
+      'Automate deployment pipelines and manage versioned APIs for seamless and reliable product releases.',
+  }
+
 ];
 
 const Services = () => {
-  // const breif = `As an Automation Test Engineer, I provide comprehensive test automation services, including framework development, test script creation, and CI/CD integration. With expertise in leading automation tools and a focus on efficiency and reliability, I deliver robust testing solutions that ensure high-quality software and faster release cycles.`;
-  const breif = `As a highly skilled Automation Test Engineer/SDET, I specialize in ensuring seamless, high-quality software releases through robust test automation, precise quality assurance, and advanced testing strategies. With expertise in designing scalable automation frameworks, implementing CI/CD pipelines, and leveraging modern testing tools, I deliver reliable software systems that enhance user satisfaction and drive business success.`;
+  const breif = `As a skilled Backend Developer, I specialize in building secure, scalable, and high-performance server-side applications. With expertise in Laravel, Node.js, and PHP, I design robust RESTful APIs, manage efficient databases, and architect backend systems that ensure reliability and seamless user experiences. From designing clean code structures to integrating CI/CD workflows, I bring development efficiency and technical excellence to every project.`;
   return (
     <div id="services">
       <HyperOne value={'Services'} />

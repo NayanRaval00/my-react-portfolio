@@ -79,7 +79,7 @@ export default function Home() {
           <Blog />
         </div>
         <div className="mt-16">
-          <Certificates />
+          {/* <Certificates /> */}
         </div>
         <Offer />
         <div className="mt-16">

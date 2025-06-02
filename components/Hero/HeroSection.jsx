@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div className="flex justify-center items-center max-w-2xl py-32 sm:py-48 lg:py-48">
           <div className="select-none flex flex-col justify-center items-center align-middle">
             <p className={`text-4xl text-center font-bold mb-2 sm:text-5xl `}>
-              Hello world! 👋 <br/> I&apos;m an {DESIGNATION} 💻
+              Hello👋 <br /> I&apos;m an {DESIGNATION} 💻
             </p>
             <div>
               <div className="relative w-72 h-72">
@@ -31,9 +31,10 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
-            <p className="mt-6 text-xl text-justify leading-8 ">
-              I&apos;m {NAME}. A passionate {DESIGNATION} from India.📍 Specializing in Laravel Framework development. {' '}
+            <p className="mt-6 text-xl text-justify leading-8">
+              I'm {NAME}, a dedicated {DESIGNATION} based in India📍, specializing in backend development with the Laravel framework. I’m passionate about building efficient, secure, and scalable web applications.
             </p>
+
           </div>
         </div>
       </div>

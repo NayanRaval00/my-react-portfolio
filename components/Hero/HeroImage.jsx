@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function HeroImage() {
   return (
     <Image
-      alt="Hardik image"
+      alt="Nayan image"
       src="/imgs/me1.jpeg"
       width={288}
       height={288}

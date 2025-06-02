@@ -35,29 +35,29 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/imgs/logo.png" />
         <meta name="theme-color" content="#f0f0ff" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />
+
         <meta
           name="description"
-          content="I'm a Automation Test Engineer with 10 Years Experience of Self Learning and Projects Experience,"
+          content="I'm a Backend Developer specializing in Laravel, Node.js, PHP, and API development. I build secure, scalable, and high-performance backend systems."
         />
-        <meta name="copyright" content="Hardik Chotaliya" />
+        <meta name="copyright" content="Nayan Raval" />
         <meta
           name="keywords"
-          content="Hardik, Hardik Chotaliya, Hardik Bharat Chotaliya, hardikchotaliya, Chotaliya, tester, QA, Automation Test engineer, Automation, Test engineer, SDET, Automation Engineer, frontend, Front-end, backend, Back-end, fullstack, Full-stack, engineer, Engineer, freelancer, uiux, designer, bussiness, web3, PWA, performance, Optimization"
+          content="Laravel, Node.js, PHP, backend developer, API developer, fullstack, web developer, scalable systems, secure backend, RESTful API, backend engineer, MySQL, JavaScript, server-side development, Nayan Raval"
         />
-        <meta name="author" content="Hardik Chotaliya" />
-        <meta property="og:title" content="Hardik Chotaliya Automation Test Engineer" />
+        <meta name="author" content="Nayan Raval" />
+
+        <meta property="og:title" content="Nayan Raval | Laravel & Node.js Backend Developer" />
         <meta
           property="og:description"
-          content="Hello My Name is Hardik Chotaliya, I'm a Automation Test Engineer specalize in Automation Framework Development"
+          content="Hi, I'm a backend developer specializing in Laravel, Node.js, and scalable API development. I bring ideas to life with clean, efficient server-side code."
         />
-        <meta property="og:url" content="https://hardikchotaliya.vercel.app/" />
+        <meta property="og:url" content="https://nayanraval.vercel.app/" />
         <meta name="robots" content="all" />
       </Head>
+
       <style jsx global>{`
         html {
           font-family: ${montserrat.style.fontFamily};

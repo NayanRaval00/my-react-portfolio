@@ -59,8 +59,8 @@ const About = () => {
     ),
     []
   );
-  const aboutText = 
-      `A results-driven Automation Test Engineer focused on delivering high-quality software through effective test automation strategies. Proficient in developing and maintaining robust test frameworks using tools like WebDriverIO, Selenium and various programming languages like JavaScript/TypeScript. Passionate about continuous improvement and ensuring seamless integration of testing within the CI/CD pipeline.`;
+  const aboutText =
+    `As a skilled Backend Developer, I specialize in building secure, scalable, and high-performance server-side applications. With expertise in Laravel, Node.js, and PHP, I design robust RESTful APIs, manage efficient databases, and architect backend systems that ensure reliability and seamless user experiences. From designing clean code structures to integrating CI/CD workflows, I bring development efficiency and technical excellence to every project.`;
   return useMemo(
     () => (
       <div id="about" className={`${styles['about-container']}`}>
@@ -70,7 +70,7 @@ const About = () => {
             <HyperOne value={'About Me'} />
             <h2 className="text-2xl">
               {' '}
-              Automation Test Engineer 
+              Automation Test Engineer
             </h2>
             <p className="text-xl text-justify">{aboutText}</p>
             <div className={`${styles.personalInfo}`}>
@@ -102,28 +102,26 @@ const About = () => {
           </section>
           <section className={styles.skillSection}>
             <div className={styles.subject}>
-              <div className={'subject'}>Hard Work</div>
+              <div className={'subject'}>DevOps & API Deployment</div>
               <div className={styles['progress-bar']}>
                 <div
                   ref={ref1}
-                  className={`${
-                    isVisible ? styles['fade-in1'] : styles['progress-line']
-                  }`}
-                  // value="95%"
+                  className={`${isVisible ? styles['fade-in1'] : styles['progress-line']
+                    }`}
+                  // value="40%"
                   style={{
-                    width: '95%',
+                    width: '40%',
                   }}
                 ></div>
               </div>
             </div>
             <div className={styles.subject}>
-              <div className={styles.subject}>Automation Testing</div>
+              <div className={styles.subject}>Backend Architecture & API Design</div>
               <div className={styles['progress-bar']}>
                 <div
                   ref={ref2}
-                  className={`${
-                    isVisible ? styles['fade-in2'] : styles['progress-line']
-                  }`}
+                  className={`${isVisible ? styles['fade-in2'] : styles['progress-line']
+                    }`}
                   // value="85%"
                   style={{
                     width: '85%',
@@ -132,13 +130,12 @@ const About = () => {
               </div>
             </div>
             <div className={styles.subject}>
-              <div className={styles.subject}>Creativity</div>
+              <div className={styles.subject}>Database Management & Optimization</div>
               <div className={styles['progress-bar']}>
                 <div
                   ref={ref3}
-                  className={`${
-                    isVisible ? styles['fade-in3'] : styles['progress-line']
-                  }`}
+                  className={`${isVisible ? styles['fade-in3'] : styles['progress-line']
+                    }`}
                   // value="80%"
                   style={{
                     width: '80%',
@@ -147,13 +144,12 @@ const About = () => {
               </div>
             </div>
             <div className={styles.subject}>
-              <div className={styles.subject}>Leadership</div>
+              <div className={styles.subject}>Authentication & Security</div>
               <div className={styles['progress-bar']}>
                 <div
                   ref={ref4}
-                  className={`${
-                    isVisible ? styles['fade-in4'] : styles['progress-line']
-                  }`}
+                  className={`${isVisible ? styles['fade-in4'] : styles['progress-line']
+                    }`}
                   // value="80%"
                   style={{
                     width: '80%',

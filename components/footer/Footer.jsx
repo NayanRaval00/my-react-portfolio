@@ -8,33 +8,27 @@ export default function Footer() {
     {
       id: 1,
       ariaLabel: 'linkedin',
-      href: 'https://www.linkedin.com/in/hardikchotaliya/',
+      href: 'https://www.linkedin.com/in/nayan-raval-224969170/',
       icon: <AiFillLinkedin size={40} />,
     },
     {
       id: 2,
       ariaLabel: 'github',
-      href: 'https://github.com/hardikchotaliya',
+      href: 'https://github.com/NayanRaval00',
       icon: <AiFillGithub size={40} />,
     },
     {
       id: 3,
       ariaLabel: 'dailydev',
-      href: 'https://app.daily.dev/hardikchotaliya',
+      href: 'https://app.daily.dev/nayanraval',
       icon: <SiDailydotdev size={40} />,
     },
     {
       id: 4,
       ariaLabel: 'codepen',
-      href: 'https://codepen.io/Hardik-Chotaliya',
+      href: 'https://codepen.io/nayan029',
       icon: <AiOutlineCodepen size={40} />,
-    },
-    {
-      id: 5,
-      ariaLabel: 'leetcode',
-      href: 'https://leetcode.com/u/hardikchotaliya/',
-      icon: <TbBrandLeetcode size={40} />,
-    },
+    }
   ];
   return (
     <footer className="py-4 z-40">
@@ -51,10 +45,10 @@ export default function Footer() {
         ))}
       </div>
       {/* <p className="text-center mt-4 text-lg font-bold">
-        © {new Date().getFullYear()} Hardik Chotaliya. @Credit:- Created byHadil Ben Abdallah. All rights reserved.
+        © {new Date().getFullYear()} Nayan Raval. @Credit:- Created byHadil Ben Abdallah. All rights reserved.
       </p> */}
       <p className="text-center mt-4 text-lg font-bold">
-        © {new Date().getFullYear()} Hardik Chotaliya. All rights reserved.
+        © {new Date().getFullYear()} Nayan Raval. All rights reserved.
         Created by&nbsp;
         <a
           href="https://www.linkedin.com/in/hadil-ben-abdallah"

@@ -14,33 +14,27 @@ const SocialLinks = () => {
     {
       id: 1,
       ariaLabel: 'linkedin',
-      href: 'https://www.linkedin.com/in/hardikchotaliya/',
+      href: 'https://www.linkedin.com/in/nayan-raval-224969170/',
       icon: AiFillLinkedin,
     },
     {
       id: 2,
       ariaLabel: 'github',
-      href: 'https://github.com/hardikchotaliya',
+      href: 'https://github.com/NayanRaval00',
       icon: AiFillGithub,
     },
     {
       id: 3,
       ariaLabel: 'dailydev',
-      href: 'https://app.daily.dev/hardikchotaliya',
+      href: 'https://app.daily.dev/nayanraval',
       icon: SiDailydotdev,
     },
     {
       id: 4,
       ariaLabel: 'codepen',
-      href: 'https://codepen.io/Hardik-Chotaliya',
+      href: 'https://codepen.io/nayan029',
       icon: AiOutlineCodepen,
-    },
-    {
-      id: 5,
-      ariaLabel: 'leetcode',
-      href: 'https://leetcode.com/u/hardikchotaliya/',
-      icon: TbBrandLeetcode,
-    },
+    }
   ];
 
   return (
