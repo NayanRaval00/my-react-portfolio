@@ -10,6 +10,7 @@ export default function NavBar() {
     { id: 4, name: 'Skills', href: '#skills' },
     { id: 5, name: 'Projects', href: '#projects' },
     { id: 6, name: 'Blog', href: '#blog' },
+    { id: 7, name: 'Resume', href: '#resume' },
     // { id: 7, name: 'Certificates', href: '#certificates' },
     { id: 8, name: 'Contact', href: '#contact' },
     {

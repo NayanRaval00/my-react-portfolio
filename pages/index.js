@@ -12,6 +12,7 @@ import Blog from '@/components/blog/Blog';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { NAME, DESIGNATION } from '../constants/constants';
+import ResumeSection from '@/components/resume/ResumeSection';
 export default function Home() {
   Home.getInitialProps = async ({ res }) => {
     res?.setHeader('Cache-Control', 'public, max-age=3600');
@@ -80,6 +81,9 @@ export default function Home() {
         </div>
         <div className="mt-16">
           {/* <Certificates /> */}
+        </div>
+        <div className="mt-16">
+          <ResumeSection />
         </div>
         <Offer />
         <div className="mt-16">
