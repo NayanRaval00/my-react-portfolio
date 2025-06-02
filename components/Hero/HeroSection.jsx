@@ -32,7 +32,7 @@ const HeroSection = () => {
               </div>
             </div>
             <p className="mt-6 text-xl text-justify leading-8">
-              I'm {NAME}, a dedicated {DESIGNATION} based in India📍, specializing in backend development with the Laravel framework. I’m passionate about building efficient, secure, and scalable web applications.
+              I&apos;m {NAME}, a dedicated {DESIGNATION} based in India📍, specializing in backend development with the Laravel framework. I&apos;m passionate about building efficient, secure, and scalable web applications.
             </p>
 
           </div>
