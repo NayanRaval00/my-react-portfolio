@@ -1,0 +1,24 @@
+{
+  "name": "Hardik Chotaliya Website",
+  "short_name": "Hardik Chotaliya",
+  "description": "A Progressive Web App built by Hardik",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f11",
+  "theme_color": "#0f0f11",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/imgs/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/imgs/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "maskable": true
+}
