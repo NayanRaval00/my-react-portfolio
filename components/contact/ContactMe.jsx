@@ -27,14 +27,14 @@ export default function ContactMe() {
       setIsNotEmpty(true);
       return;
     }
-
+// W7Z5csOc7VM0l-pBZ
     console.log("Sending email...");
     emailjs
       .sendForm(
-        'service_htybuxq',
-        'template_1sbxhzu',
+        'service_jhprza3', 
+        'template_e7du7nq',
         form.current,
-        'vBL9qRwSq7UY477Aw'
+        'W7Z5csOc7VM0l-pBZ'
         // process.env.NEXT_PUBLIC_EMAILJS_USER_ID
       )
       .then(
