@@ -100,7 +100,7 @@ export default function ContactMe() {
         <section className="flex flex-col mx-8 sm:mx-16 mt-8 sm:mt-0 w-full max-w-md">
           <form ref={form} className="space-y-6" onSubmit={sendEmail}>
             <div className="flex flex-col">
-              <label htmlFor="user_name" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
+              <label htmlFor="user_name" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
                 Name
               </label>
               <input
@@ -108,11 +108,11 @@ export default function ContactMe() {
                 type="text"
                 name="user_name"
                 placeholder="John Doe"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
+                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="from_name" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
+              <label htmlFor="from_name" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
                 Email
               </label>
               <input
@@ -120,16 +120,16 @@ export default function ContactMe() {
                 type="email"
                 name="from_name"
                 placeholder="john@example.com"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
+                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="message" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
+              <label htmlFor="message" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
                 Message
               </label>
               <textarea
                 id="message"
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 resize-none"
+                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 resize-none"
                 rows="4"
                 name="message"
                 placeholder="Hi Nayan, I would love to collaborate..."

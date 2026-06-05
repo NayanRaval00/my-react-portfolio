@@ -59,7 +59,7 @@ const Blog = () => {
         </div>
         <div className="flex justify-center items-center mt-8 space-x-2">
           <button
-            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 cursor-custom"
+            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-50 cursor-custom"
             onClick={(e) => handlePageChange(currentPage - 1, e)}
             disabled={currentPage === 1}
           >
@@ -71,7 +71,7 @@ const Blog = () => {
               className={`px-3 py-2 rounded ${
                 currentPage === page
                   ? 'bg-[#0EA5E9] text-white'
-                  : 'border border-gray-300 dark:border-gray-600'
+                  : 'border border-gray-300 dark:border-gray-600 text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5'
               }`}
               onClick={(e) => handlePageChange(page, e)}
             >
@@ -79,7 +79,7 @@ const Blog = () => {
             </button>
           ))}
           <button
-            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 cursor-custom"
+            className="px-3 py-2 rounded border border-gray-300 dark:border-gray-600 text-slate-700 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 disabled:opacity-50 cursor-custom"
             onClick={(e) => handlePageChange(currentPage + 1, e)}
             disabled={currentPage === totalPages}
           >

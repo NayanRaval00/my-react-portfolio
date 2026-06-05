@@ -39,11 +39,11 @@ export function ThemeToggler() {
     >
       {icon === 'moon' ? (
         <div aria-label="moon">
-          <FaMoon aria-label="moon" color="grey" className="h-6 w-6" />
+          <FaMoon aria-label="moon" className="h-6 w-6 text-yellow-300 hover:text-yellow-200 transition-colors duration-300" />
         </div>
       ) : (
         <div aria-label="sun">
-          <FaSun aria-label="sun" color="yellow" className="h-6 w-6" />
+          <FaSun aria-label="sun" className="h-6 w-6 text-amber-500 hover:text-amber-600 transition-colors duration-300" />
         </div>
       )}
     </button>

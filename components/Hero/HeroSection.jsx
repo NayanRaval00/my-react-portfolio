@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <div
       id="home"
-      className={`w-full flex justify-center items-center text-white`}
+      className={`w-full flex justify-center items-center text-slate-900 dark:text-white`}
     >
       <header className={`select-none absolute inset-x-0 top-0 `}>
         <NavBar />

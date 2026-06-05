@@ -25,7 +25,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="navbar fixed w-full z-50 bg-mainBg">
+    <nav className="navbar fixed w-full z-50 bg-[var(--navBg)] border-b border-[var(--navBorder)] backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -35,7 +35,7 @@ export default function NavBar() {
                   aria-label="Nayan Raval"
                   className="text-sky-400 text-3xl"
                 >
-                  Nayan<span className="text-white text-3xl font-bold">.</span>Raval
+                  Nayan<span className="text-slate-900 dark:text-white text-3xl font-bold">.</span>Raval
                 </h3>
               </a>
             </div>
@@ -45,7 +45,7 @@ export default function NavBar() {
               {navigation.map((navlink) => {
                 return (
                   <a
-                    className="text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
+                    className="text-slate-700 dark:text-white hover:text-sky-500 dark:hover:text-sky-400 px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
                     key={navlink.id}
                     href={navlink.href}
                   >
@@ -53,7 +53,7 @@ export default function NavBar() {
                   </a>
                 );
               })}
-              <div className="text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
+              <div className="text-slate-700 dark:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
                 <ThemeToggler />
               </div>
             </div>
@@ -93,20 +93,20 @@ export default function NavBar() {
       </div>
       {isOpen && (
         <div className="hmd:hidden">
-          <div className="relative px-2 pt-2 pb-3 sm:px-3 bg-mainBg z-50 h-auto min-h-[24rem] flex flex-col justify-between">
+          <div className="relative px-2 pt-2 pb-3 sm:px-3 bg-[var(--navBg)] border-b border-[var(--navBorder)] backdrop-blur-md z-50 h-auto min-h-[24rem] flex flex-col justify-between">
             {navigation.map((navlink) => {
               return (
                 <a
                   key={navlink.id}
                   onClick={() => setIsOpen(false)}
-                  className="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
+                  className="block text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
                   href={navlink.href}
                 >
                   {navlink.name}
                 </a>
               );
             })}
-            <div className="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
+            <div className="block text-slate-700 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
               <ThemeToggler />
             </div>
           </div>

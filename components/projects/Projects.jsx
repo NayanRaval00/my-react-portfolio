@@ -65,12 +65,12 @@ export default function Projects() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-sky-400 bg-sky-400/10 px-2.5 py-1 rounded-full">
                   {project.category}
                 </span>
-                <div className="p-2 bg-white/5 rounded-lg">
+                <div className="p-2 bg-slate-200/50 dark:bg-white/5 rounded-lg">
                   {project.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
-              <p className="text-gray-300 text-base mb-6 text-justify leading-relaxed">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{project.title}</h3>
+              <p className="text-slate-600 dark:text-gray-300 text-base mb-6 text-justify leading-relaxed">
                 {project.description}
               </p>
             </div>
@@ -79,18 +79,18 @@ export default function Projects() {
                 {project.tech.map((t, idx) => (
                   <span
                     key={idx}
-                    className="text-xs bg-white/10 text-gray-200 px-2 py-1 rounded"
+                    className="text-xs bg-slate-200/50 text-slate-700 dark:bg-white/10 dark:text-gray-200 px-2 py-1 rounded"
                   >
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="flex space-x-4 border-t border-white/10 pt-4">
+              <div className="flex space-x-4 border-t border-slate-200 dark:border-white/10 pt-4">
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-sm font-semibold text-gray-300 hover:text-white transition-colors duration-200"
+                  className="flex items-center text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
                 >
                   <FaGithub className="mr-2 text-lg" /> Source Code
                 </a>
@@ -99,7 +99,7 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm font-semibold text-sky-400 hover:text-sky-300 transition-colors duration-200"
+                    className="flex items-center text-sm font-semibold text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-300 transition-colors duration-200"
                   >
                     <FaExternalLinkAlt className="mr-2 text-sm" /> Live Demo
                   </a>

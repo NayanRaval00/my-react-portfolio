@@ -23,8 +23,8 @@ const ServicesCard = ({ src, alt, title, description, className }) => {
           <Image width={55} height={55} alt={alt} src={src} loading="lazy" />
         </Suspense>
       </div>
-      <h3 className="text-xl font-bold p-2 text-white mt-2 leading-snug">{title}</h3>
-      <p className="text-gray-300 text-sm p-2 leading-relaxed text-justify">{description}</p>
+      <h3 className="text-xl font-bold p-2 text-slate-900 dark:text-white mt-2 leading-snug">{title}</h3>
+      <p className="text-slate-600 dark:text-gray-300 text-sm p-2 leading-relaxed text-justify">{description}</p>
     </div>
   );
 };

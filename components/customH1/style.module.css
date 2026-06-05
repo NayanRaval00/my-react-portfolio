@@ -1,7 +1,7 @@
 .h1 {
   text-transform: uppercase;
   margin: 0 auto 20px;
-  border: 2px solid white;
+  border: 2px solid var(--borderColor);
   padding: 10px 20px;
   font-size: 20px !important;
   font-weight: 600;
