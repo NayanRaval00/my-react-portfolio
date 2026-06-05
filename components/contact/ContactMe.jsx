@@ -1,19 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import HyperOne from '../customH1/HyperOne';
-import emailjs from '@emailjs/browser';
 
 export default function ContactMe() {
   const form = useRef();
   const [isMessageSent, setMessageSent] = useState(false);
   const [isNotEmpty, setIsNotEmpty] = useState(false);
   const [error, setError] = useState(null);
+  const [isSending, setIsSending] = useState(false);
 
-  useEffect(() => {
-    // Initialize EmailJS
-    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_USER_ID);
-  }, []);
-
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     console.log("Form submitted");
 
@@ -27,28 +22,40 @@ export default function ContactMe() {
       setIsNotEmpty(true);
       return;
     }
-// W7Z5csOc7VM0l-pBZ
+
     console.log("Sending email...");
-    emailjs
-      .sendForm(
-        'service_jhprza3', 
-        'template_e7du7nq',
-        form.current,
-        'W7Z5csOc7VM0l-pBZ'
-        // process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          e.target.reset();
-          setMessageSent(true);
-          setError(null);
+    setIsSending(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        (error) => {
-          console.error("Failed to send email:", error.text);
-          setError("Failed to send email. Please try again later.");
-        }
-      );
+        body: JSON.stringify({
+          user_name: userName,
+          from_name: userEmail,
+          message: message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Email sent successfully:", data.message);
+        e.target.reset();
+        setMessageSent(true);
+      } else {
+        console.error("Failed to send email:", data.message);
+        setError(data.message || "Failed to send email. Please try again later.");
+      }
+    } catch (err) {
+      console.error("Failed to send email:", err);
+      setError("Failed to send email. Please check your connection and try again.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   useEffect(() => {
@@ -90,46 +97,53 @@ export default function ContactMe() {
             Feel free to reach out! I&apos;m always excited to connect with like-minded professionals and explore new opportunities. Whether you have a project in mind or want to collaborate on innovative ideas, let&apos;s work together to create something amazing. Send me a message, and let&apos;s start the conversation!
           </p>
         </section>
-        <section className="flex flex-col mx-8 sm:mx-16 mt-8 sm:mt-0">
-          <form ref={form} className="max-w-md mx-auto" onSubmit={sendEmail}>
-            <div className="mb-4">
-              <label htmlFor="user_name" className=" font-semibold mb-2 cursor-custom">
+        <section className="flex flex-col mx-8 sm:mx-16 mt-8 sm:mt-0 w-full max-w-md">
+          <form ref={form} className="space-y-6" onSubmit={sendEmail}>
+            <div className="flex flex-col">
+              <label htmlFor="user_name" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
                 Name
               </label>
               <input
                 id="user_name"
                 type="text"
                 name="user_name"
-                className="w-full px-4 py-2 bg-gray-800  outline-none  border-transparent border-2 transition focus:border-primary"
+                placeholder="John Doe"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="from_name" className=" font-semibold mb-2 cursor-custom">
+            <div className="flex flex-col">
+              <label htmlFor="from_name" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
                 Email
               </label>
               <input
                 id="from_name"
                 type="email"
                 name="from_name"
-                className="w-full px-4 py-2 bg-gray-800  outline-none  border-transparent border-2 transition focus:border-primary"
+                placeholder="john@example.com"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
               />
             </div>
-            <div className="mb-4">
-              <label htmlFor="message" className="font-semibold mb-2 cursor-custom">
+            <div className="flex flex-col">
+              <label htmlFor="message" className="text-sm font-semibold mb-2 text-gray-300 tracking-wide cursor-custom">
                 Message
               </label>
               <textarea
                 id="message"
-                className="w-full px-4 py-2 bg-gray-800  outline-none  border-transparent border-2 transition focus:border-primary"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 resize-none"
                 rows="4"
                 name="message"
+                placeholder="Hi Nayan, I would love to collaborate..."
               ></textarea>
             </div>
-            <input
-              className="bg-primary text-white cursor-pointer font-bold py-2 px-4 "
+            <button
               type="submit"
-              value="Send Message"
-            />
+              disabled={isSending}
+              className={`w-full bg-gradient-to-r from-[#0EA5E9] to-indigo-600 hover:from-sky-500 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-sky-500/20 transform hover:-translate-y-0.5 active:translate-y-0 transition duration-150 cursor-custom ${
+                isSending ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isSending ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
         </section>
       </main>

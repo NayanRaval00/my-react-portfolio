@@ -4,13 +4,11 @@ export default function HeroImage() {
   return (
     <Image
       alt="Nayan image"
-      src="/imgs/me1.jpeg"
+      src="/imgs/image.png"
       width={288}
       height={288}
-      layout="fixed"
-      objectFit="cover"
       priority
-      className="object-cover w-full h-full  ring-gray-300 dark:ring-gray-500"
+      className="object-cover w-full h-full ring-gray-300 dark:ring-gray-500"
       style={{ color: 'transparent' }}
     />
   );

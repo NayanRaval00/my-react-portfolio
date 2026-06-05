@@ -1,12 +1,17 @@
 import '@/styles/globals.css';
-import { Montserrat, Rubik } from 'next/font/google';
+import { Outfit, Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 
-const montserrat = Rubik({
+const outfit = Outfit({
   subsets: ['latin'],
   display: 'swap',
-  fallback: ['system-ui', 'arial'],
-  preload: false,
+  variable: '--font-headings',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
 });
 import { ThemeProvider } from '@/context/ContextProvider';
 import { useEffect } from 'react';
@@ -60,7 +65,10 @@ export default function MyApp({ Component, pageProps }) {
 
       <style jsx global>{`
         html {
-          font-family: ${montserrat.style.fontFamily};
+          font-family: ${inter.style.fontFamily}, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+          font-family: ${outfit.style.fontFamily}, sans-serif;
         }
       `}</style>
       <ThemeProvider>

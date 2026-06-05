@@ -3,26 +3,28 @@ import styles from './service.module.css';
 import VanillaTilt from 'vanilla-tilt';
 import { Suspense, useEffect } from 'react';
 import Fallback from '../image/Fallback';
+
 const ServicesCard = ({ src, alt, title, description, className }) => {
   useEffect(() => {
-    const element = document.querySelectorAll('.card');
-    VanillaTilt.init(element, {
-      max: 20,
-      speed: 200,
+    const elements = document.querySelectorAll(`.${styles.parent}`);
+    VanillaTilt.init(elements, {
+      max: 15,
+      speed: 300,
       glare: false,
     });
-  });
+  }, []);
+
   return (
     <div
-      className={`${styles.parent} card flex justify-center items-center flex-col p-4 `}
+      className={`${styles.parent} flex justify-center items-center flex-col p-6 pt-16 text-center`}
     >
       <div className={`${styles.logo} ${styles[className]}`}>
         <Suspense fallback={<Fallback />}>
-          <Image width={70} height={70} alt={alt} src={src} loading="lazy" />
+          <Image width={55} height={55} alt={alt} src={src} loading="lazy" />
         </Suspense>
       </div>
-      <h1 className="text-2xl text-center font-bold p-2">{title}</h1>
-      <p className=" text-center text-lg p-2">{description}</p>
+      <h3 className="text-xl font-bold p-2 text-white mt-2 leading-snug">{title}</h3>
+      <p className="text-gray-300 text-sm p-2 leading-relaxed text-justify">{description}</p>
     </div>
   );
 };

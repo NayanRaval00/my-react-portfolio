@@ -2,17 +2,16 @@ import { Animation } from '@/components/Hero/Animation';
 import HeroSection from '@/components/Hero/HeroSection';
 import Skills from '@/components/Skills/Skills';
 import About from '@/components/about/About';
+import Blog from '@/components/blog/Blog';
 import ContactMe from '@/components/contact/ContactMe';
 import Footer from '@/components/footer/Footer';
 import Offer from '@/components/offer/Offer';
 import Projects from '@/components/projects/Projects';
+import ResumeSection from '@/components/resume/ResumeSection';
 import Services from '@/components/services/Services';
-import Certificates from './../components/certificates/Certificates';
-import Blog from '@/components/blog/Blog';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { NAME, DESIGNATION } from '../constants/constants';
-import ResumeSection from '@/components/resume/ResumeSection';
+import { DESIGNATION, NAME } from '../constants/constants';
 export default function Home() {
   Home.getInitialProps = async ({ res }) => {
     res?.setHeader('Cache-Control', 'public, max-age=3600');
@@ -57,7 +56,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{NAME} | {DESIGNATION}</title>
+        <title>{`${NAME} | ${DESIGNATION}`}</title>
       </Head>
 
       <Animation />
@@ -79,9 +78,7 @@ export default function Home() {
         <div className="mt-16">
           <Blog />
         </div>
-        <div className="mt-16">
-          {/* <Certificates /> */}
-        </div>
+
         <div className="mt-16">
           <ResumeSection />
         </div>

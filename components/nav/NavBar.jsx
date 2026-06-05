@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { ThemeToggler } from '@/theme/Themetoggler';
-import Link from 'next/link';
+import { useState } from 'react';
 
 export default function NavBar() {
   const navigation = [
@@ -13,12 +12,6 @@ export default function NavBar() {
     { id: 7, name: 'Resume', href: '#resume' },
     // { id: 7, name: 'Certificates', href: '#certificates' },
     { id: 8, name: 'Contact', href: '#contact' },
-    {
-      id: 9,
-      name: <ThemeToggler />,
-      href: '/',
-      onClick: (e) => e.preventDefault(),
-    },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -37,30 +30,32 @@ export default function NavBar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <Link href="#home" onClick={handleLogoClick}>
+              <a href="#home" onClick={handleLogoClick}>
                 <h3
-                  aria-label="Nayan Chotaliya"
-                  className="text-sky-600 text-3xl font-bold"
+                  aria-label="Nayan Raval"
+                  className="text-sky-400 text-3xl"
                 >
-                  Nayan<span className="text-white text-3xl font-bold">.</span>DEV
+                  Nayan<span className="text-white text-3xl font-bold">.</span>Raval
                 </h3>
-              </Link>
+              </a>
             </div>
           </div>
           <div className="hidden hmd:block">
             <div className="ml-4 flex items-center">
               {navigation.map((navlink) => {
                 return (
-                  <Link
-                    onClick={navlink.onClick}
+                  <a
                     className="text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
                     key={navlink.id}
                     href={navlink.href}
                   >
                     {navlink.name}
-                  </Link>
+                  </a>
                 );
               })}
+              <div className="text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
+                <ThemeToggler />
+              </div>
             </div>
           </div>
           <div className="hmd:hidden">
@@ -101,19 +96,19 @@ export default function NavBar() {
           <div className="relative px-2 pt-2 pb-3 sm:px-3 bg-mainBg z-50 h-auto min-h-[24rem] flex flex-col justify-between">
             {navigation.map((navlink) => {
               return (
-                <Link
+                <a
                   key={navlink.id}
-                  onClick={() => {
-                    navlink.onClick && navlink.onClick();
-                    setIsOpen(false);
-                  }}
+                  onClick={() => setIsOpen(false)}
                   className="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
                   href={navlink.href}
                 >
                   {navlink.name}
-                </Link>
+                </a>
               );
             })}
+            <div className="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
+              <ThemeToggler />
+            </div>
           </div>
         </div>
       )}

@@ -69,8 +69,7 @@ const About = () => {
           <section className={`${styles.infosection}`}>
             <HyperOne value={'About Me'} />
             <h2 className="text-2xl">
-              {' '}
-              Automation Test Engineer
+              Backend Developer
             </h2>
             <p className="text-xl text-justify">{aboutText}</p>
             <div className={`${styles.personalInfo}`}>

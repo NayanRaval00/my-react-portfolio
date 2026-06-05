@@ -1,29 +1,54 @@
 .parent {
-  background: rgba(255, 255, 255, 0.068);
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
   color: #fff;
-  border-radius: 37px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 40px; /* offset to allow space for the floating logo */
+}
+
+.parent:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--textColor);
+  box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.25);
+  transform: translateY(-4px);
 }
 
 .logo {
-  top: -60px;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-  animation: dropShadowEffect 3s infinite;
+  position: absolute;
+  top: -35px;
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  will-change: filter, transform;
+  transition: all 0.3s ease;
+}
+
+.parent:hover .logo {
+  border-color: var(--textColor);
+  transform: scale(1.1);
 }
 
 .logo1 {
-  filter: drop-shadow(0 0 2em #022a8f );
+  filter: drop-shadow(0 0 1.5em rgba(2, 42, 143, 0.6));
 }
 
 .logo2 {
-  filter: drop-shadow(0 0 2em #f7b239);
+  filter: drop-shadow(0 0 1.5em rgba(247, 178, 57, 0.6));
 }
 
 .logo3 {
-  filter: drop-shadow(0 0 2em #1c78c0);
+  filter: drop-shadow(0 0 1.5em rgba(28, 120, 192, 0.6));
 }
 
 .logo4 {
-  filter: drop-shadow(0 0 2em #045b67);
+  filter: drop-shadow(0 0 1.5em rgba(4, 91, 103, 0.6));
 }

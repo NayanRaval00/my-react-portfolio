@@ -7,4 +7,9 @@ const HeroFallback = () => {
 const TestimonialFallback = () => {
   return <div className="TestimonialFallback"></div>;
 };
+const Fallback = () => {
+  return <div className="w-full h-full bg-transparent"></div>;
+};
 export { AboutFallback, HeroFallback, TestimonialFallback };
+export default Fallback;
+
