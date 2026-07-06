@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import HyperOne from '../customH1/HyperOne';
+import { PORTFOLIO_DATA } from '@/constants/portfolioData';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FiMail, FiMapPin, FiSend, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ContactMe() {
   const form = useRef();
@@ -8,24 +11,22 @@ export default function ContactMe() {
   const [error, setError] = useState(null);
   const [isSending, setIsSending] = useState(false);
 
+  const { email, location, linkedin, github } = PORTFOLIO_DATA.personal;
+
   const sendEmail = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    setError(null);
 
-    // Validation logic
-    const userName = form.current.user_name.value;
-    const userEmail = form.current.from_name.value;
-    const message = form.current.message.value;
+    const userName = form.current.user_name.value.trim();
+    const userEmail = form.current.from_name.value.trim();
+    const message = form.current.message.value.trim();
 
     if (!userName || !userEmail || !message) {
-      console.log("Form validation failed");
       setIsNotEmpty(true);
       return;
     }
 
-    console.log("Sending email...");
     setIsSending(true);
-    setError(null);
 
     try {
       const response = await fetch('/api/send-email', {
@@ -43,16 +44,13 @@ export default function ContactMe() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log("Email sent successfully:", data.message);
         e.target.reset();
         setMessageSent(true);
       } else {
-        console.error("Failed to send email:", data.message);
-        setError(data.message || "Failed to send email. Please try again later.");
+        setError(data.message || 'Failed to send email. Please try again later.');
       }
     } catch (err) {
-      console.error("Failed to send email:", err);
-      setError("Failed to send email. Please check your connection and try again.");
+      setError('Failed to send email. Please check your connection and try again.');
     } finally {
       setIsSending(false);
     }
@@ -64,99 +62,189 @@ export default function ContactMe() {
         setMessageSent(false);
         setIsNotEmpty(false);
         setError(null);
-      }, 3000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [isMessageSent, isNotEmpty, error]);
+
   return (
-    <>
-      <style jsx>{`
-        .popup {
-          position: fixed;
-          top: 10%;
-          right: 1%;
-          background-color: rgba(0, 0, 0, 0.6);
-          padding:20px;
-          color: var(--textColor)
-          padding: 16px;
-          border-radius: 4px;
-        }
-      `}</style>
-      <div className="my-16">
-        <HyperOne value={'Contact me'} />
-      </div>
-      <main
-        id="contact"
-        className="container mx-auto flex flex-col sm:flex-row justify-center items-center"
-      >
-        <section className="mx-8 sm:mx-16 flex flex-col max-w-xl">
-          <h2 className=" font-bold text-5xl sm:text-7xl">
-            Let&apos;s Connect!
+    <section id="contact" className="py-24 relative overflow-hidden">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-5xl">
+        
+        {/* Title */}
+        <div className="flex flex-col items-center mb-16 text-center">
+          <h2 className="text-sm font-semibold tracking-widest text-sky-400 uppercase">
+            Get In Touch
           </h2>
-          <p className="text-lg  mt-4">
-            Feel free to reach out! I&apos;m always excited to connect with like-minded professionals and explore new opportunities. Whether you have a project in mind or want to collaborate on innovative ideas, let&apos;s work together to create something amazing. Send me a message, and let&apos;s start the conversation!
-          </p>
-        </section>
-        <section className="flex flex-col mx-8 sm:mx-16 mt-8 sm:mt-0 w-full max-w-md">
-          <form ref={form} className="space-y-6" onSubmit={sendEmail}>
-            <div className="flex flex-col">
-              <label htmlFor="user_name" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
-                Name
-              </label>
-              <input
-                id="user_name"
-                type="text"
-                name="user_name"
-                placeholder="John Doe"
-                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="from_name" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
-                Email
-              </label>
-              <input
-                id="from_name"
-                type="email"
-                name="from_name"
-                placeholder="john@example.com"
-                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="message" className="text-sm font-semibold mb-2 text-slate-700 dark:text-gray-300 tracking-wide cursor-custom">
-                Message
-              </label>
-              <textarea
-                id="message"
-                className="w-full px-4 py-3 bg-slate-100 border border-slate-200 dark:bg-white/5 dark:border-white/10 rounded-xl text-slate-900 dark:text-white outline-none transition-all duration-300 focus:border-[#0EA5E9] focus:ring-2 focus:ring-[#0EA5E9]/20 resize-none"
-                rows="4"
-                name="message"
-                placeholder="Hi Nayan, I would love to collaborate..."
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              disabled={isSending}
-              className={`w-full bg-gradient-to-r from-[#0EA5E9] to-indigo-600 hover:from-sky-500 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-sky-500/20 transform hover:-translate-y-0.5 active:translate-y-0 transition duration-150 cursor-custom ${
-                isSending ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              {isSending ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
-        </section>
-      </main>
-      {isMessageSent && (
-        <div className="popup">
-          <p>Message sent successfully! ✅</p>
+          <h3 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            Let&apos;s Build Something Scalable
+          </h3>
+          <div className="w-12 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full mt-4" />
         </div>
-      )}
-      {isNotEmpty && (
-        <div className="popup">
-          <p>Please fill out all fields ❌</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-stretch max-w-4xl mx-auto">
+          
+          {/* Direct channels (Left) */}
+          <div className="md:col-span-5 flex flex-col justify-between space-y-8">
+            <div className="space-y-6">
+              <h4 className="text-2xl font-bold text-white">Let&apos;s Connect</h4>
+              <p className="text-slate-400 text-sm leading-relaxed text-justify">
+                Whether you need a system architect to design high-concurrency APIs, optimize AWS infrastructure, or lead software projects, feel free to reach out. I will respond to your inquiry within 24 business hours.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3.5">
+                  <div className="p-3 bg-white/5 border border-white/5 rounded-xl text-sky-400">
+                    <FiMail className="h-5 w-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase">Email Direct</span>
+                    <a href={`mailto:${email}`} className="text-sm font-semibold text-white hover:text-sky-400 transition-colors">
+                      {email}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3.5">
+                  <div className="p-3 bg-white/5 border border-white/5 rounded-xl text-indigo-400">
+                    <FiMapPin className="h-5 w-5" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase">Location</span>
+                    <span className="text-sm font-semibold text-white">
+                      {location}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Link widgets */}
+            <div className="flex space-x-4 pt-6 border-t border-white/5">
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center p-3 rounded-xl bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
+                <FaLinkedinIn className="h-5 w-5" />
+              </a>
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center p-3 rounded-xl bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
+                <FaGithub className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Form (Right) */}
+          <div className="md:col-span-7 bg-white/5 border border-white/5 rounded-2xl p-6 sm:p-8 backdrop-blur-xl">
+            <form ref={form} onSubmit={sendEmail} className="space-y-5">
+              
+              <div className="flex flex-col space-y-1.5">
+                <label htmlFor="user_name" className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                  Your Name
+                </label>
+                <input
+                  id="user_name"
+                  type="text"
+                  name="user_name"
+                  placeholder="John Doe"
+                  className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none transition-colors duration-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500/25"
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col space-y-1.5">
+                <label htmlFor="from_name" className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                  Your Email
+                </label>
+                <input
+                  id="from_name"
+                  type="email"
+                  name="from_name"
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none transition-colors duration-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500/25"
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col space-y-1.5">
+                <label htmlFor="message" className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                  Message Details
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Hi Nayan, I am looking to consult with you on..."
+                  rows="4"
+                  className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl text-white outline-none transition-colors duration-200 focus:border-sky-500 focus:ring-1 focus:ring-sky-500/25 resize-none"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSending}
+                className="w-full flex items-center justify-center space-x-2 bg-white hover:bg-slate-100 text-slate-950 font-bold py-3.5 px-6 rounded-xl shadow-lg transition duration-200 disabled:opacity-50"
+              >
+                {isSending ? (
+                  <span>Sending Message...</span>
+                ) : (
+                  <>
+                    <span>Send Inquiry</span>
+                    <FiSend className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
         </div>
-      )}
-    </>
+
+      </div>
+
+      {/* Floating Status Alerts */}
+      <AnimatePresence>
+        {isMessageSent && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-5 py-3 rounded-xl backdrop-blur-md shadow-lg flex items-center space-x-2.5 font-semibold text-sm"
+          >
+            <FiCheckCircle className="h-5 w-5 text-emerald-400" />
+            <span>Message sent successfully! ✅</span>
+          </motion.div>
+        )}
+        
+        {isNotEmpty && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 bg-amber-500/10 border border-amber-500/20 text-amber-400 px-5 py-3 rounded-xl backdrop-blur-md shadow-lg flex items-center space-x-2.5 font-semibold text-sm"
+          >
+            <FiAlertCircle className="h-5 w-5 text-amber-400" />
+            <span>Please fill out all fields ❌</span>
+          </motion.div>
+        )}
+
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.95 }}
+            className="fixed bottom-6 right-6 z-50 bg-red-500/10 border border-red-500/20 text-red-400 px-5 py-3 rounded-xl backdrop-blur-md shadow-lg flex items-center space-x-2.5 font-semibold text-sm"
+          >
+            <FiAlertCircle className="h-5 w-5 text-red-400" />
+            <span>{error}</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 }

@@ -1,116 +1,99 @@
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { PORTFOLIO_DATA } from '@/constants/portfolioData';
+
+// Component Imports
 import { Animation } from '@/components/Hero/Animation';
+import NavBar from '@/components/nav/NavBar';
 import HeroSection from '@/components/Hero/HeroSection';
-import Skills from '@/components/Skills/Skills';
 import About from '@/components/about/About';
+import ExperienceTimeline from '@/components/experience/ExperienceTimeline';
+import Services from '@/components/services/Services';
+import Skills from '@/components/Skills/Skills';
+import Projects from '@/components/projects/Projects';
+import WhyWorkWithMe from '@/components/why/WhyWorkWithMe';
+import Certificates from '@/components/certificates/Certificates';
 import Blog from '@/components/blog/Blog';
 import ContactMe from '@/components/contact/ContactMe';
 import Footer from '@/components/footer/Footer';
-import Offer from '@/components/offer/Offer';
-import Projects from '@/components/projects/Projects';
-import ResumeSection from '@/components/resume/ResumeSection';
-import Services from '@/components/services/Services';
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { DESIGNATION, NAME } from '../constants/constants';
-export default function Home() {
-  Home.getInitialProps = async ({ res }) => {
-    res?.setHeader('Cache-Control', 'public, max-age=3600');
-    return {};
-  };
 
+export default function Home() {
+  const { name, title, tagline } = PORTFOLIO_DATA.personal;
   const [showScroller, setShowScroller] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 1600) {
+      if (window.scrollY >= 800) {
         setShowScroller(true);
       } else {
         setShowScroller(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollerStyle = {
-    padding: '10px',
-    position: 'fixed',
-    bottom: '50px',
-    right: '15px',
-    fontWeight: 'bold',
-    color: '#fff',
-    fontSize: '24px',
-    border: 'none',
-    display: showScroller ? 'block' : 'none',
-    background: 'primary',
-  };
-
   return (
     <>
       <Head>
-        <title>{`${NAME} | ${DESIGNATION}`}</title>
+        <title>{`${name} | ${title}`}</title>
       </Head>
 
+      {/* Particles Backdrop */}
       <Animation />
-      <HeroSection />
 
-      <div className="relative container mx-auto sm:col-span-12 flex flex-col items-center justify-center align-middle">
-        <div className="mt-16">
+      {/* Navigation */}
+      <NavBar />
+
+      {/* Page Sections Content Wrapper */}
+      <main className="relative min-h-screen w-full flex flex-col">
+        {/* Hero */}
+        <HeroSection />
+
+        {/* Content sections aligned with unified margins */}
+        <div className="w-full flex flex-col space-y-12">
           <About />
-        </div>
-        <div className="mt-16">
+          <ExperienceTimeline />
           <Services />
-        </div>
-        <div className="mt-16">
           <Skills />
-        </div>
-        <div className="mt-16">
           <Projects />
-        </div>
-        <div className="mt-16">
+          <WhyWorkWithMe />
+          <Certificates />
           <Blog />
-        </div>
-
-        <div className="mt-16">
-          <ResumeSection />
-        </div>
-        <Offer />
-        <div className="mt-16">
           <ContactMe />
         </div>
-        <div className="mt-16">
-          <Footer />
-        </div>
-      </div>
 
-      <button
-        className="bg-primary rounded-full"
-        style={scrollerStyle}
-        onClick={scrollToTop}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="text-white w-6 h-6"
+        {/* Minimal Footer */}
+        <Footer />
+      </main>
+
+      {/* Floating Scroll to Top button */}
+      {showScroller && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-40 p-3 bg-sky-500 hover:bg-sky-600 text-white rounded-full shadow-lg hover:shadow-sky-500/20 transform hover:-translate-y-1 transition duration-200"
+          aria-label="Scroll to top"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 10l7-7m0 0l7 7m-7-7v18"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
+        </button>
+      )}
     </>
   );
 }

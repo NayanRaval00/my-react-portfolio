@@ -1,65 +1,24 @@
-import { AiFillGithub, AiFillLinkedin, AiOutlineCodepen } from 'react-icons/ai';
-import { TbBrandLeetcode } from 'react-icons/tb';
-import { SiDailydotdev } from 'react-icons/si';
-import Anchor from '../link/Anchor';
+import { PORTFOLIO_DATA } from '@/constants/portfolioData';
 
 export default function Footer() {
-  const links = [
-    {
-      id: 1,
-      ariaLabel: 'linkedin',
-      href: 'https://www.linkedin.com/in/nayan-raval-224969170/',
-      icon: <AiFillLinkedin size={40} />,
-    },
-    {
-      id: 2,
-      ariaLabel: 'github',
-      href: 'https://github.com/NayanRaval00',
-      icon: <AiFillGithub size={40} />,
-    },
-    {
-      id: 3,
-      ariaLabel: 'dailydev',
-      href: 'https://app.daily.dev/nayanraval',
-      icon: <SiDailydotdev size={40} />,
-    },
-    {
-      id: 4,
-      ariaLabel: 'codepen',
-      href: 'https://codepen.io/nayan029',
-      icon: <AiOutlineCodepen size={40} />,
-    }
-  ];
+  const { name } = PORTFOLIO_DATA.personal;
+
   return (
-    <footer className="py-4 z-40">
-      <div className="container mx-auto flex justify-center">
-        {links.map((link) => (
-          <Anchor
-            key={link.id}
-            className="mx-4"
-            ariaLabel={link.ariaLabel}
-            href={link.href}
-          >
-            {link.icon}
-          </Anchor>
-        ))}
+    <footer className="py-12 border-t border-white/5 bg-black/10 relative z-10 w-full mt-24">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/* Brand */}
+          <div className="flex items-center space-x-1 font-mono text-xs text-slate-500">
+            <span>api.nayanraval.dev</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
+
+          {/* Copyrights */}
+          <div className="text-center sm:text-right text-xs text-slate-500">
+            <p>© {new Date().getFullYear()} {name}. All rights reserved.</p>
+          </div>
+        </div>
       </div>
-      {/* <p className="text-center mt-4 text-lg font-bold">
-        © {new Date().getFullYear()} Nayan Raval. @Credit:- Created byHadil Ben Abdallah. All rights reserved.
-      </p> */}
-      <p className="text-center mt-4 text-lg font-bold">
-        © {new Date().getFullYear()} Nayan Raval. All rights reserved.
-        Created by&nbsp;
-        <a
-          href="https://www.linkedin.com/in/hadil-ben-abdallah"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
-        >
-          Hadil Ben Abdallah
-        </a>
-        .
-      </p>
     </footer>
   );
 }

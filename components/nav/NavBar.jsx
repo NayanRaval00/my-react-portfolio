@@ -1,5 +1,6 @@
 import { ThemeToggler } from '@/theme/Themetoggler';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function NavBar() {
   const navigation = [
@@ -9,106 +10,97 @@ export default function NavBar() {
     { id: 4, name: 'Skills', href: '#skills' },
     { id: 5, name: 'Projects', href: '#projects' },
     { id: 6, name: 'Blog', href: '#blog' },
-    { id: 7, name: 'Resume', href: '#resume' },
-    // { id: 7, name: 'Certificates', href: '#certificates' },
+    { id: 7, name: 'Resume', href: '#home' },
     { id: 8, name: 'Contact', href: '#contact' },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLogoClick = () => {
-    setIsOpen(false); // Close the mobile menu if it's open
-  };
-
   return (
-    <nav className="navbar fixed w-full z-50 bg-[var(--navBg)] border-b border-[var(--navBorder)] backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <a href="#home" onClick={handleLogoClick}>
-                <h3
-                  aria-label="Nayan Raval"
-                  className="text-sky-400 text-3xl"
-                >
-                  Nayan<span className="text-slate-900 dark:text-white text-3xl font-bold">.</span>Raval
-                </h3>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/80 dark:bg-zinc-950/80 border-b border-slate-200 dark:border-zinc-800/50 backdrop-blur-md py-3 shadow-lg'
+        : 'bg-transparent py-5'
+        }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <a href="#home" className="flex items-center space-x-1 group">
+              <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                Nayan
+              </span>
+              <span className="text-xl font-extrabold text-sky-500 transition-transform duration-300 group-hover:translate-x-0.5">
+                .
+              </span>
+              <span className="text-xl font-semibold text-slate-500 dark:text-slate-400">
+                Raval
+              </span>
+            </a>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {navigation.map((navlink) => (
+              <a
+                key={navlink.id}
+                href={navlink.href}
+                className="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-slate-100 dark:hover:bg-white/5"
+              >
+                {navlink.name}
               </a>
+            ))}
+            <div className="pl-4 ml-4 border-l border-slate-200 dark:border-zinc-800 flex items-center">
+              <ThemeToggler />
             </div>
           </div>
-          <div className="hidden hmd:block">
-            <div className="ml-4 flex items-center">
-              {navigation.map((navlink) => {
-                return (
-                  <a
-                    className="text-slate-700 dark:text-white hover:text-sky-500 dark:hover:text-sky-400 px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
-                    key={navlink.id}
-                    href={navlink.href}
-                  >
-                    {navlink.name}
-                  </a>
-                );
-              })}
-              <div className="text-slate-700 dark:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
-                <ThemeToggler />
-              </div>
-            </div>
-          </div>
-          <div className="hmd:hidden">
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggler />
             <button
               onClick={toggleNavbar}
-              aria-label="toggle icon"
-              className="inline-flex items-center justify-center p-2 rounded-full text-white bg-primary focus:text-white transition duration-150 ease-in-out"
+              aria-label="toggle menu"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 focus:outline-none transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                {isOpen ? (
-                  <>
-                    <line x1="6" y1="18" x2="18" y2="6" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </>
-                ) : (
-                  <>
-                    <line x1="4" y1="6" x2="20" y2="6" />
-                    <line x1="4" y1="12" x2="16" y2="12" />
-                    <line x1="4" y1="18" x2="12" y2="18" />
-                  </>
-                )}
-              </svg>
+              {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="hmd:hidden">
-          <div className="relative px-2 pt-2 pb-3 sm:px-3 bg-[var(--navBg)] border-b border-[var(--navBorder)] backdrop-blur-md z-50 h-auto min-h-[24rem] flex flex-col justify-between">
-            {navigation.map((navlink) => {
-              return (
-                <a
-                  key={navlink.id}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105"
-                  href={navlink.href}
-                >
-                  {navlink.name}
-                </a>
-              );
-            })}
-            <div className="block text-slate-700 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-lg font-medium transition-all duration-300 ease-in-out hover:text-xl hover:scale-105 flex items-center">
-              <ThemeToggler />
-            </div>
+        <div className="md:hidden absolute top-full left-0 right-0 border-b border-slate-200 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg shadow-xl transition-all duration-300 ease-in-out">
+          <div className="px-4 pt-2 pb-6 space-y-1 sm:px-6">
+            {navigation.map((navlink) => (
+              <a
+                key={navlink.id}
+                onClick={() => setIsOpen(false)}
+                href={navlink.href}
+                className="block text-slate-700 dark:text-slate-300 hover:text-sky-500 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-3 rounded-lg text-base font-medium transition-colors"
+              >
+                {navlink.name}
+              </a>
+            ))}
           </div>
         </div>
       )}
