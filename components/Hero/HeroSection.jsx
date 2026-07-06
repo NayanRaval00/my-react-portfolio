@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedinIn, FaArrowRight } from 'react-icons/fa';
 import { FiFileText, FiServer, FiCpu, FiDatabase, FiActivity, FiTerminal } from 'react-icons/fi';
 
 export default function HeroSection() {
-  const { name, title, tagline, shortBio, linkedin, github, dailydev, codepen } = PORTFOLIO_DATA.personal;
+  const { tagline, shortBio, linkedin, github, dailydev, codepen } = PORTFOLIO_DATA.personal;
 
   // State for simulated live stats
   const [requests, setRequests] = useState(128452);
@@ -67,18 +67,14 @@ export default function HeroSection() {
           <div className="lg:col-span-7 flex flex-col space-y-6 text-left">
             <div className="inline-flex items-center space-x-2 bg-sky-500/10 border border-sky-500/20 text-sky-600 dark:text-sky-400 px-3 py-1.5 rounded-full text-xs font-semibold w-fit tracking-wider uppercase">
               <FiServer className="h-3.5 w-3.5 mr-1" />
-              {title}
+              Senior Backend Engineer
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-              Building Scalable{' '}
-              <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                Backend Systems
-              </span>{' '}
-              & AI-Powered Solutions
+              {tagline}
             </h1>
 
-            <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
+            <p className="text-slate-600 dark:text-slate-400 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl text-justify">
               {shortBio}
             </p>
 
@@ -88,7 +84,7 @@ export default function HeroSection() {
                 href="#projects"
                 className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition duration-200 group"
               >
-                View Projects
+                View Case Studies
                 <FaArrowRight className="ml-2 h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
               <a
@@ -103,7 +99,7 @@ export default function HeroSection() {
                 href="#contact"
                 className="inline-flex items-center justify-center bg-transparent hover:bg-slate-100 dark:hover:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-white font-medium px-6 py-3.5 rounded-xl transition duration-200"
               >
-                Contact Me
+                Schedule a Consultation
               </a>
             </div>
 

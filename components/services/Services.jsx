@@ -1,5 +1,5 @@
 import { PORTFOLIO_DATA } from '@/constants/portfolioData';
-import { FiServer, FiCode, FiLayers, FiCpu, FiCloud, FiHelpCircle, FiCheck } from 'react-icons/fi';
+import { FiServer, FiCode, FiLayers, FiCpu, FiCloud, FiActivity, FiDatabase, FiShuffle, FiHelpCircle, FiCheck } from 'react-icons/fi';
 
 export default function Services() {
   const services = PORTFOLIO_DATA.services;
@@ -11,11 +11,14 @@ export default function Services() {
     <FiLayers key="2" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
     <FiCpu key="3" className="h-6 w-6 text-amber-600 dark:text-amber-400" />,
     <FiCloud key="4" className="h-6 w-6 text-pink-600 dark:text-pink-400" />,
-    <FiHelpCircle key="5" className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
+    <FiActivity key="5" className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
+    <FiDatabase key="6" className="h-6 w-6 text-sky-600 dark:text-sky-400" />,
+    <FiShuffle key="7" className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    <FiHelpCircle key="8" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
   ];
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="py-24 relative overflow-hidden bg-black/5 dark:bg-black/10">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 max-w-6xl">
         
         {/* Title */}
@@ -38,7 +41,7 @@ export default function Services() {
             >
               <div className="space-y-4">
                 <div className="p-3 bg-slate-100 dark:bg-white/5 w-fit rounded-xl border border-slate-200 dark:border-white/5">
-                  {icons[idx]}
+                  {icons[idx] || <FiServer className="h-6 w-6 text-sky-400" />}
                 </div>
                 
                 <h4 className="text-xl font-bold text-slate-900 dark:text-white tracking-wide">

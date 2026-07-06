@@ -1,5 +1,5 @@
 import { PORTFOLIO_DATA } from '@/constants/portfolioData';
-import { FiServer, FiShield, FiCloud, FiCpu, FiMapPin, FiBriefcase } from 'react-icons/fi';
+import { FiServer, FiShield, FiCloud, FiCpu, FiMapPin, FiBriefcase, FiCheck } from 'react-icons/fi';
 
 export default function About() {
   const { name, shortBio, location, experienceYears } = PORTFOLIO_DATA.personal;
@@ -7,10 +7,19 @@ export default function About() {
 
   // Map icons to backend pillars
   const icons = [
-    <FiServer key="0" className="h-6 w-6 text-sky-600 dark:text-sky-400" />,
-    <FiShield key="1" className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
-    <FiCloud key="2" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
+    <FiBriefcase key="0" className="h-6 w-6 text-sky-600 dark:text-sky-400" />,
+    <FiServer key="1" className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />,
+    <FiShield key="2" className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />,
     <FiCpu key="3" className="h-6 w-6 text-amber-600 dark:text-amber-400" />,
+  ];
+
+  const industries = [
+    'Logistics & Warehousing',
+    'Event Ticketing & Entertainment',
+    'Hospitality & Booking SaaS',
+    'Travel Portals & Aggregators',
+    'Enterprise Corporate LMS',
+    'Social Discovery Networks'
   ];
 
   return (
@@ -20,10 +29,10 @@ export default function About() {
         {/* Title */}
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-sm font-semibold tracking-widest text-sky-600 dark:text-sky-400 uppercase">
-            About Me
+            Executive Summary
           </h2>
           <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
-            Engineering High-Performance Backend Ecosystems
+            Technical Leadership & Solution Architecture
           </h3>
           <div className="w-12 h-1 bg-gradient-to-r from-sky-400 to-indigo-500 rounded-full mt-4" />
         </div>
@@ -32,29 +41,26 @@ export default function About() {
           
           {/* Bio Description (Left) */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            <h4 className="text-2xl font-bold text-slate-900 dark:text-white">My Philosophy</h4>
+            <h4 className="text-2xl font-bold text-slate-900 dark:text-white">Engineering for Business Outcomes</h4>
             <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed text-justify">
-              I believe backend engineering is more than just writing code; it is about translating complex business constraints into highly efficient, secure, and robust systems. 
+              I specialize in designing and deploying enterprise-grade backend architectures, resilient APIs, and automated cloud systems. With 5+ years of experience in Laravel, Node.js, and AWS, I help startups and enterprises optimize performance, secure payment infrastructures, and integrate intelligent AI solutions.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed text-justify">
-              For over five years, I have worked across the lifecycle of software systems—from database normalization and query profiling to Docker orchestration and AWS cloud hosting. I focus on reducing response latencies, securing critical transaction flows, and ensuring services stay online.
+              My approach connects technical execution directly with product viability and resource optimization. Whether resolving critical database synchronization lag or implementing multi-party payouts, I focus on lowering risk, improving developer productivity, and supporting scale.
             </p>
 
-            {/* Quick stats list */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="bg-slate-100/70 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 p-4 rounded-xl flex items-center space-x-3">
-                <FiBriefcase className="h-5 w-5 text-sky-600 dark:text-sky-400" />
-                <div className="flex flex-col">
-                  <span className="text-xs text-slate-500 dark:text-slate-500 font-medium">Experience</span>
-                  <span className="text-sm font-bold text-slate-800 dark:text-white">{experienceYears} Years</span>
-                </div>
-              </div>
-              <div className="bg-slate-100/70 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 p-4 rounded-xl flex items-center space-x-3">
-                <FiMapPin className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-                <div className="flex flex-col">
-                  <span className="text-xs text-slate-500 dark:text-slate-500 font-medium">Location</span>
-                  <span className="text-sm font-bold text-slate-800 dark:text-white">Ahmedabad, IN</span>
-                </div>
+            {/* Industries Worked In */}
+            <div className="space-y-3 pt-4 border-t border-slate-200 dark:border-white/5">
+              <h5 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">
+                Industry Experience:
+              </h5>
+              <div className="grid grid-cols-2 gap-2">
+                {industries.map((ind, idx) => (
+                  <div key={idx} className="flex items-center space-x-2 text-xs text-slate-700 dark:text-slate-300">
+                    <FiCheck className="h-3.5 w-3.5 text-sky-500 flex-shrink-0" />
+                    <span>{ind}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

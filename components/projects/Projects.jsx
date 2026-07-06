@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PORTFOLIO_DATA } from '@/constants/portfolioData';
 import { FaGithub, FaArrowRight } from 'react-icons/fa';
-import { FiExternalLink, FiX, FiCode, FiCheckCircle, FiAlertCircle } from 'react-icons/fi';
+import { FiExternalLink, FiX, FiCode, FiCheckCircle, FiAlertCircle, FiLayers, FiImage } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Projects() {
@@ -157,39 +157,76 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Challenges & Outcome Split */}
+                  {/* Architecture & Outcomes */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-3">
-                      <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">
-                        Technical Challenges & Resolution:
+                      <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center">
+                        <FiLayers className="h-4 w-4 mr-1.5 text-indigo-500" />
+                        Solution Architecture Description:
                       </h4>
                       <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed text-justify">
-                        {selectedProject.challenges}
+                        {selectedProject.architecture}
                       </p>
                     </div>
 
                     <div className="space-y-3">
-                      <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">
+                      <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center">
+                        <FiCheckCircle className="h-4 w-4 mr-1.5 text-emerald-500" />
                         Business Outcomes & Metrics:
                       </h4>
-                      <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed text-justify">
+                      <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed text-justify font-semibold">
                         {selectedProject.outcome}
                       </p>
                     </div>
                   </div>
 
-                  {/* System Architecture Diagram */}
-                  {selectedProject.diagram && (
+                  {/* Technical Challenges */}
+                  <div className="space-y-3">
+                    <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400">
+                      Key Engineering Challenges & Resolutions:
+                    </h4>
+                    <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed text-justify">
+                      {selectedProject.challenges}
+                    </p>
+                  </div>
+
+                  {/* Visual Schema / Mockup Representation */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Flowchart Diagram */}
+                    {selectedProject.diagram && (
+                      <div className="space-y-3">
+                        <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center">
+                          <FiCode className="h-4 w-4 mr-1.5 text-sky-600 dark:text-sky-400" />
+                          Architecture Flowchart:
+                        </h4>
+                        <pre className="bg-slate-950 dark:bg-black/60 border border-slate-800 dark:border-white/5 p-4 rounded-xl font-mono text-[10px] sm:text-xs text-slate-300 overflow-x-auto leading-relaxed shadow-inner">
+                          {selectedProject.diagram}
+                        </pre>
+                      </div>
+                    )}
+
+                    {/* Screenshot Mockup Container */}
                     <div className="space-y-3">
                       <h4 className="text-xs uppercase font-bold tracking-wider text-slate-500 dark:text-slate-400 flex items-center">
-                        <FiCode className="h-4 w-4 mr-1.5 text-sky-600 dark:text-sky-400" />
-                        System Architecture:
+                        <FiImage className="h-4 w-4 mr-1.5 text-indigo-600 dark:text-indigo-400" />
+                        UI & Console Mockup details:
                       </h4>
-                      <pre className="bg-slate-950 dark:bg-black/60 border border-slate-800 dark:border-white/5 p-4 rounded-xl font-mono text-[10px] sm:text-xs text-slate-300 overflow-x-auto leading-relaxed shadow-inner">
-                        {selectedProject.diagram}
-                      </pre>
+                      <div className="bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 rounded-xl p-5 flex flex-col justify-center items-center h-48 sm:h-56 relative overflow-hidden group">
+                        <div className="absolute top-2 left-2 flex space-x-1">
+                          <span className="h-2 w-2 rounded-full bg-red-400" />
+                          <span className="h-2 w-2 rounded-full bg-amber-400" />
+                          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                        </div>
+                        <FiImage className="h-10 w-10 text-slate-400 dark:text-slate-500 mb-3 group-hover:scale-110 transition-transform duration-300" />
+                        <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300 text-center">
+                          {selectedProject.screenshots}
+                        </span>
+                        <span className="text-[10px] text-slate-500 dark:text-slate-500 mt-2 font-mono text-center">
+                          Simulated system snapshot
+                        </span>
+                      </div>
                     </div>
-                  )}
+                  </div>
 
                   {/* Code links */}
                   <div className="flex items-center space-x-4 pt-6 border-t border-slate-200 dark:border-white/5">

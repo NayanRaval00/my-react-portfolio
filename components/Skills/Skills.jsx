@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PORTFOLIO_DATA } from '@/constants/portfolioData';
-import { FiServer, FiCloud, FiDatabase, FiCreditCard, FiCpu, FiLayout, FiSettings } from 'react-icons/fi';
+import { FiServer, FiLayout, FiCloud, FiDatabase, FiTerminal, FiCreditCard, FiSettings } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Skills() {
@@ -10,12 +10,12 @@ export default function Skills() {
   // Category Icon Mapper
   const categoryIcons = {
     'Backend': <FiServer className="h-4 w-4" />,
-    'Cloud & Infrastructure': <FiCloud className="h-4 w-4" />,
-    'Database & Caching': <FiDatabase className="h-4 w-4" />,
-    'Payments & Integrations': <FiCreditCard className="h-4 w-4" />,
-    'AI & Automation': <FiCpu className="h-4 w-4" />,
-    'Frontend (Responsive)': <FiLayout className="h-4 w-4" />,
-    'Tools & Workflows': <FiSettings className="h-4 w-4" />,
+    'Frontend': <FiLayout className="h-4 w-4" />,
+    'Cloud': <FiCloud className="h-4 w-4" />,
+    'Database': <FiDatabase className="h-4 w-4" />,
+    'DevOps': <FiTerminal className="h-4 w-4" />,
+    'Payments': <FiCreditCard className="h-4 w-4" />,
+    'Tools': <FiSettings className="h-4 w-4" />,
   };
 
   return (
@@ -46,7 +46,7 @@ export default function Skills() {
               }`}
             >
               {categoryIcons[cat.category] || <FiServer className="h-4 w-4" />}
-              <span>{cat.category.split(' ')[0]}</span>
+              <span>{cat.category}</span>
             </button>
           ))}
         </div>
@@ -57,7 +57,7 @@ export default function Skills() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           <AnimatePresence mode="popLayout">
-            {skillCategories[activeCategory].items.map((skill, idx) => (
+            {skillCategories[activeCategory]?.items.map((skill, idx) => (
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -4,7 +4,7 @@ export default function Footer() {
   const { name } = PORTFOLIO_DATA.personal;
 
   return (
-    <footer className="py-12 border-t border-white/5 bg-black/10 relative z-10 w-full mt-24">
+    <footer className="py-12 border-t border-slate-200 dark:border-white/5 bg-black/5 dark:bg-black/10 relative z-10 w-full mt-24">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Brand */}
